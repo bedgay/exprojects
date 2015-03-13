@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>.: View Image :.</title>
+		<style type="text/css">
+	        .divContent 
+	        {
+	        	position: absolute;
+	        	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='', sizingMethod='scale'); /*IE8*/
+	        	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='', sizingMethod='scale')"; /*IE9*/
+		        width:103px;
+		        height:103px;
+	        }
+		</style>
+		<script type="text/javascript" src="../../js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript">
+			function readURL(input) {
+                if (input.files && input.files[0]) { // Mozilla
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#imgContent').attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                } else { // IE
+                	/*
+                	If you go to Internet Explorer, Tools, Internet Option, Security, Custom, find the 
+                	"Include local directory path When uploading files to a server" 
+                	(it is quite a ways down) and click on "Enable" . This will work
+                	*/
+                    var url = input.value;
+                    url = url.replace(/\\/g, '/');
+                    $('.divContent').css('filter', "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + url + "', sizingMethod='scale')");
+                }
+			}
+		</script>
+	</head>
+	<body>
+		<form action="" enctype="">
+			<img id="imgContent" alt="" src=""/>
+			<div class="divContent"></div>
+			<input id="fileUpload" type="file" onchange="readURL(this)"/>
+		</form>
+	</body>
+</html>
