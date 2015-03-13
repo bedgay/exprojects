@@ -1,0 +1,346 @@
+/* --------------------------------------------------
+html5doctor.com Reset Stylesheet
+v1.4
+2009-07-27
+Author: Richard Clark - http://richclarkdesign.com
+-------------------------------------------------- */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, menu, nav, section,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	line-height: 1;
+}
+
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+a {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	text-decoration: none;
+}
+
+ins {
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none;
+}
+
+img {
+	vertical-align: text-bottom;
+}
+
+mark {
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted #000;
+	cursor: help;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #cccccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+input, select {
+	vertical-align: middle;
+}
+
+/* ---------------------------------
+	clearfix
+--------------------------------- */
+.clearfix {
+	* zoom: 1;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	font-size: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+
+
+/* CSS Information =======================
+Table of Contents:
++body
++btn
++module
++global
+========================================*/
+/* ---------------------------------
+	+body
+--------------------------------- */
+body{
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color: #000;
+	line-height: 150%;
+}
+
+
+
+/* ---------------------------------
+	+btn
+--------------------------------- */
+.mixjuke-btn-type0001-outerwrap{}
+.mixjuke-btn-type0001-middlewrap{
+	border-bottom: 1px solid #9a9fa4;
+}
+.mixjuke-btn-type0001-innerwrap{
+	display: block;
+	font-size: 16px;
+	line-height: 22px;
+	padding: 20px 0 20px 12px;
+	background: url(../img/ico-mixjuke-0001.png) no-repeat 100% 50%;
+	-webkit-background-size: 18px 15px;
+	-moz-background-size: 18px 15px;
+	-o-background-size: 18px 15px;
+	background-size: 18px 15px;
+}
+a.mixjuke-btn-type0001-innerwrap:link{color: #000;}
+a.mixjuke-btn-type0001-innerwrap:visited{color: #000;}
+a.mixjuke-btn-type0001-innerwrap:hover{color: #000;}
+a.mixjuke-btn-type0001-innerwrap:active{color: #000;}
+
+.mixjuke-btn-type0002-outerwrap{}
+.mixjuke-btn-type0002-middlewrap{display:inline-block;}
+.mixjuke-btn-type0002-innerwrap{
+	display: block;
+	font-size: 15px;
+	line-height: 21px;
+	padding: 10px;
+	width:180px;
+	background-color: #487083;
+	border:none;
+	color:#fff;
+	font-weight:700;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-ms-border-radius: 0px;
+	-o-border-radius: 0px;
+	border-radius: 0px;
+}
+.mixjuke-btn-type0002-innerwrap:hover{
+	background-color: #7d878b;
+	color:#fff;
+}
+
+/* ---------------------------------
+	+module
+--------------------------------- */
+.mixjuke-wrapper-0001-01{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 20px;
+	margin-top: 25px;
+}
+.mixjuke-ttl-0001-01{
+	line-height: 20px;
+	font-size: 15px;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	border-bottom: 2px solid #808080;
+}
+.mixjuke-date-0001-01{
+	line-height: 10px;
+	font-size: 10px;
+	margin-top: 7px;
+	padding-bottom: 5px;
+}
+.mixjuke-paragraph-0001-01{
+	line-height: 20px;
+	font-size: 15px;
+	margin-top: 25px;
+}
+.mixjuke-indent-0001-01{
+	padding-left: 1em;
+	text-indent: -1em;
+	display: block;
+}
+.mixjuke-input-detail-confirm-0001{
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 15px;
+	padding: 18px 10px;
+	width: 100%;
+}
+
+
+
+/* ---------------------------------
+	+form elements
+--------------------------------- */
+.mixjuke-input-text-0001-01{
+	display:block;
+	width:100%;
+	background-color:#fff;
+	border: 1px solid #7d878b;
+	font-size: 15px;
+	line-height: 15px;
+	padding: 18px 10px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.mixjuke-input-text-0001-01::-webkit-input-placeholder {
+	color:#e8eaeb;
+}
+.mixjuke-label-0001-01{
+	display:block;
+	font-size:13px;
+	line-height:16px;
+}
+.mixjuke-error-message-0001{
+	color:#f00;
+	font-size:13px;
+}
+/* ---------------------------------
+	+global
+--------------------------------- */
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.flt-c{margin-left: auto;margin-right: auto;}
+.flt-l{float:left;}
+.flt-r{float:left;}
+.f-s-13{font-size:13px;}
+.f-s-15{font-size:15px;}
+.l-h-13{
+	line-height: 13px;
+}
+.l-h-16{
+	line-height: 16px;
+}
+.t-a-c{
+	text-align: center;
+}
+.t-a-l{
+	text-align: left;
+}
+.t-a-r{
+	text-align: right;
+}
+.m-b-25{margin-bottom:25px;}
+.m-t-3{margin-top:3px;}
+.m-t-10{margin-top:10px;}
+.m-t-20{margin-top:20px;}
+.m-t-25{margin-top:25px;}
+.m-t-30{margin-top:30px;}
+.m-t-35{margin-top:35px;}
+.m-t-40{margin-top:40px;}
+.p-b-0{padding-bottom: 0;}
+.p-b-6{padding-bottom: 6px;}
+.p-b-20{padding-bottom: 20px;}
+.p-b-30{padding-bottom: 30px;}
+.p-l-15{padding-left:15px;}
+.p-r-15{padding-right:15px;}
+.p-t-6{padding:6px;}
+.word-break{
+	word-wrap:break-word;
+	word-break:break-all;
+}
+.ui-loader-default {
+	background: 0;
+	filter: Alpha(Opacity=18);
+	opacity: .18;
+	width: 46px;
+	height: 46px;
+	margin-left: -23px;
+	margin-top: -23px;
+}
+
+.ui-loader {
+	display: none;
+	z-index: 9999999;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	border: 0;
+}
+
+.ui-loader .ui-icon {
+	background-color: #000;
+	display: block;
+	margin: 0;
+	width: 44px;
+	height: 44px;
+	padding: 1px;
+	-webkit-border-radius: 36px;
+	border-radius: 36px;
+}
+
+.ui-btn-text {
+	display: none;
+}
