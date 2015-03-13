@@ -1,0 +1,20 @@
+body {
+	/*
+	margin: 0px 0px 0px 0px;
+	*/
+}
+.table {
+	width: 60%;
+    background-color: #39f;
+}
+.header td {
+    background-color: #eff;
+    font-weight: bold;
+}
+.body td {
+    background-color: #fff;
+}
+
+#login {
+	cursor: pointer; 
+}

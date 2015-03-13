@@ -1,0 +1,9 @@
+title Shitoryu: Admin Menu Sequence Diagram
+User -> +CPanel view(menu.tagx): get request
+CPanel view(menu.tagx) -> +CPanelController: request
+CPanelController -> +CategoryService: findAll4Menu()
+CategoryService -> +CategoryDAO: findAllByType(CType)
+CategoryDAO --> -CategoryService: List<Category>
+CategoryService --> -CPanelController: List<Map<Sring, Object>>
+CPanelController --> -CPanel view(menu.tagx): menuData
+CPanel view(menu.tagx) -> menu.js: view menu
