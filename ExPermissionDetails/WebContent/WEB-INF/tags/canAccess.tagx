@@ -1,0 +1,26 @@
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:pd="urn:jsptld:/WEB-INF/tlds/PermissionDetails.tld"
+	version="2.0">
+	
+	<jsp:output omit-xml-declaration="yes" />
+
+	<!-- ATTRIBUTES -->
+	<jsp:directive.attribute name="subject" type="java.lang.String" required="false" rtexprvalue="true" description="subject" />
+	<jsp:directive.attribute name="subjectId" type="java.lang.Integer" required="false" rtexprvalue="true" description="subject id" />
+	<jsp:directive.attribute name="permis" type="java.lang.String" required="true" rtexprvalue="true" description="List of permission code" />
+	<!-- ATTRIBUTES -->
+	<c:choose>
+		<c:when test="${not empty subject and not empty subjectId and pd:canAccessDetail(subject, subjectId, permis)}">
+			<jsp:doBody />
+		</c:when>
+		<c:otherwise>
+			<c:if test="${empty subject and empty subjectId and pd:canAccess(permis)}">
+				<jsp:doBody />
+			</c:if>
+		</c:otherwise>
+	</c:choose>
+</jsp:root>

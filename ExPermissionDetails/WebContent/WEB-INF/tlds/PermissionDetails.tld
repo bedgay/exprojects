@@ -1,0 +1,17 @@
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>PermissionDetails TLD</short-name>
+	
+	<function>
+        <name>canAccess</name>
+        <function-class>javaz.spring.aop.AuthorityService</function-class>
+        <function-signature>Boolean canAccess(java.lang.String)</function-signature>
+    </function>
+    
+	<function>
+        <name>canAccessDetail</name>
+        <function-class>javaz.spring.aop.AuthorityService</function-class>
+        <function-signature>Boolean canAccess(java.lang.String, java.lang.Integer, java.lang.String)</function-signature>
+    </function>
+</taglib>
