@@ -1,0 +1,39 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<task:scheduled-tasks scheduler="xmlSchedulers">
+	
+        <!-- Run every 5 seconds -->
+        <task:scheduled ref="xmlScheduler" method="run" fixed-rate="5000" initial-delay="5000"/>
+        <!-- <task:scheduled ref="xmlScheduler" method="run" fixed-delay="5000" initial-delay="5000"/> -->
+		<!-- <task:scheduled ref="xmlScheduler" method="run" cron="*/5 * * * * *" /> -->
+		
+        <!-- Run in 2nd second of 5 second -->	       	
+		<!-- <task:scheduled ref="xmlScheduler" method="run" cron="2/5 * * * * *" /> -->
+		
+		<!-- Run at every 17:28:00 -->
+        <!-- <task:scheduled ref="xmlScheduler" method="run" cron="0 28 17 * * *" /> -->
+        
+        <!-- Run on 20th of August -->
+        <!-- <task:scheduled ref="xmlScheduler" method="run" cron="* * * 20-25 8 *" /> -->
+        
+        <!-- <task:scheduled ref="xmlScheduler" method="run" fixed-delay="5000000000" initial-delay="5000"/> -->
+	</task:scheduled-tasks>
+	<task:scheduler id="xmlSchedulers" pool-size="10"/>
+	
+	<!-- Enable scheduler annotation -->
+	<!-- Don't work! Why ?? -->
+    <!-- <task:annotation-driven executor="annotationExecutor" 
+        scheduler="annotationScheduler"
+         mode="proxy" proxy-target-class="true"/>	
+	<task:executor id="annotationExecutor" pool-size="5"/>
+    <task:scheduler id="annotationScheduler" pool-size="10"/> -->
+    
+    <task:executor id="asyncAnnotationScheduler" pool-size="9" rejection-policy="CALLER_RUNS"/>
+
+</beans:beans>

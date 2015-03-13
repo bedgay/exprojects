@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.2.xsd ">
+
+<!-- 	Common AspectJ annotations :
+	@Before – Run before the method execution
+	@After – Run after the method returned a result
+	@AfterReturning – Run after the method returned a result, intercept the returned result as well.
+	@AfterThrowing – Run after the method throws an exception
+	@Around – Run around the method execution, combine all three advices above. -->
+	
+	<aop:aspectj-autoproxy />
+	<!-- 
+    <bean id="logAspect" class="javaz.spring.aop.LoggingAspect" />
+	<bean id="customTransaction" class="javaz.spring.aop.CustomTransaction" />
+	
+    <tx:advice id="txCustomTransaction" transaction-manager="customTransaction">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED" rollback-for="Throwable" />
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:advisor advice-ref="txCustomTransaction"
+            pointcut="execution(* javaz.spring.mvc.controller.*.*(..))" />
+    </aop:config> -->
+
+</beans>

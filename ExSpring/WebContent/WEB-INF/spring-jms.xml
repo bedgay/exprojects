@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:context="http://www.springframework.org/schema/context"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+        http://www.springframework.org/schema/beans    
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+<!-- 
+      <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+            <property name="brokerURL" value="tcp://localhost:61616" />
+      </bean>
+
+      <bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQQueue">
+            <constructor-arg index="0" value="springtest" />
+      </bean>
+
+      <bean id="jmstemplate" class="org.springframework.jms.core.JmsTemplate">
+            <property name="connectionFactory" ref="connectionFactory" />
+            <property name="defaultDestination" ref="defaultDestination" />
+      </bean> -->
+
+</beans>

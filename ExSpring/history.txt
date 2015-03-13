@@ -1,0 +1,129 @@
+
+2014-08-22 ----------------------------- ----------------------------- -----------------------------
+
+Add annotation config
+--> http://www.petrikainulainen.net/programming/spring-framework/spring-from-the-trenches-using-environment-specific-cron-expressions-with-the-scheduled-annotation/
+
+2014-08-20 ----------------------------- ----------------------------- -----------------------------
+
+Start for Scheduler
+--> http://docs.spring.io/spring/docs/current/spring-framework-reference/html/scheduling.html
+--> http://www.mkyong.com/spring-batch/spring-batch-and-spring-taskscheduler-example/
+
+2014-08-14 ----------------------------- ----------------------------- -----------------------------
+
+Impl Custom Transaction ??
+AOP all methos
+--> http://stackoverflow.com/questions/7817822/spring-aop-pointcut-for-every-method-with-an-annotation
+
+2014-08-05 ----------------------------- ----------------------------- -----------------------------
+
+Hibernate lazy Jackson JSON Views ignored: ??
+--> http://stackoverflow.com/questions/12850875/jackson-json-views-ignored
+--> http://stackoverflow.com/questions/15395018/have-jackson-ignore-fields-that-are-lazy-initialized-when-serializing-to-json
+--> http://stackoverflow.com/questions/15424521/could-not-initialize-proxy-no-session
+
+2014-08-04 ----------------------------- ----------------------------- -----------------------------
+
+AOP: starting
+--> http://docs.spring.io/spring/docs/3.0.5.RELEASE/reference/aop.html
+
+Method security: ??
+--> http://www.studytrails.com/frameworks/spring/spring-security-method-level.jsp
+
+Spring Security: with port
+--> http://stackoverflow.com/questions/8915701/spring-security-3-setting-up-tomcat-6-for-ssl
+
+2014-07-31 ----------------------------- ----------------------------- -----------------------------
+
+Spring security: db service reference
+--> http://stackoverflow.com/questions/14071759/no-bean-named-authenticationmanager
+
+Spring Security: change login action ??
+--> http://mark.koli.ch/spring-3-and-spring-security-setting-your-own-custom-j-spring-security-check-filter-processes-url
+
+2014-07-30 ----------------------------- ----------------------------- -----------------------------
+
+Custom encode:
+-->http://stackoverflow.com/questions/19494621/spring-security-custom-hash-algorithm
+
+SHA
+--> http://www.sha1-online.com/
+
+Spring security improve
+--> http://codehustler.org/blog/spring-security-tutorial-form-login/
+--> http://howtodoinjava.com/2014/02/15/xml-config-based-method-level-spring-security-using-protect-pointcut/
+--> http://stackoverflow.com/questions/6946182/how-to-use-springs-user-by-username-query-clause-in-a-java-class
+--> http://docs.spring.io/autorepo/docs/spring-security/3.2.x/guides/form.html
+
+2014-07-29 ----------------------------- ----------------------------- -----------------------------
+
+Spring Security: step by step
+--> http://docs.spring.io/spring-security/site/docs/3.0.x/reference/ns-config.html
+--> http://docs.spring.io/spring-security/site/docs/3.1.6.RELEASE/reference/ns-config.html
+--> http://stackoverflow.com/questions/3388779/websphere-unsupported-configuration-attributes-permitall-using-spring
+--> http://stackoverflow.com/questions/22271645/spring-security-cant-login
+
+Spring Security: change login action ??
+--> http://mark.koli.ch/spring-3-and-spring-security-setting-your-own-custom-j-spring-security-check-filter-processes-url
+
+2014-07-26 ----------------------------- ----------------------------- -----------------------------
+
+Log4j: add ${catalina.base} to use the dynamic log files path 
+
+2014-07-26 ----------------------------- ----------------------------- -----------------------------
+
+Start Tomcat7 in eclipse
+ERROR: Initializing Spring root WebApplicationContext waiting...
+Resolution: must have a right mysql server configuration
+--> http://stackoverflow.com/questions/22871789/tomcat-7-hangs-on-initializing-spring-root-webapplicationcontext
+
+2014-07-23 ----------------------------- ----------------------------- -----------------------------
+
+?? JMS
+--> http://keyurj.blogspot.com/2014/01/jms-with-spring-4.html
+
+Session listener
+--> http://www.mkyong.com/servlet/a-simple-httpsessionlistener-example-active-sessions-counter/
+--> http://www.mkyong.com/servlet/a-simple-httpsessionattributelistener-example/
+
+Dynamic Web Module 3.0 in eclipse
+--> http://crunchify.com/how-to-solve-dynamic-web-module-3-1-requires-java-1-7-or-newer-in-eclipse/
+
+2014-07-17 ----------------------------- ----------------------------- -----------------------------
+
+Spring event handling --> must view
+--> http://www.luckyryan.com/2014/05/28/spring-application-event-listeners/
+--> http://www.tutorialspoint.com/spring/event_handling_in_spring.htm
+--> http://www.programmingforliving.com/2012/10/event-handling-in-spring.html
+
+Add spring custom event
+--> http://blog.yohanliyanage.com/2012/09/eventing-with-spring-framework/
+--> http://www.tutorialspoint.com/spring/custom_events_in_spring.htm
+
+2014-07-16 ----------------------------- ----------------------------- -----------------------------
+
+Jackson for REST
+--> http://stackoverflow.com/questions/9237389/spring-mvc-error-the-resource-identified-by-this-request-is-only-capable-of-gen
+--> http://stackoverflow.com/questions/7462202/spring-json-request-getting-406-not-acceptable
+
+@PostConstruct / @PreDestroy
+--> http://www.mkyong.com/spring/spring-postconstruct-and-predestroy-example/
+--> http://stackoverflow.com/questions/12238740/how-to-retrieve-hibernate-hbm2ddl-auto-value-from-hibernate-at-runtime
+
+2014-07-15 ----------------------------- ----------------------------- -----------------------------
+
+Add AOP
+--> http://www.mkyong.com/spring3/spring-aop-aspectj-annotation-example/
+
+2014-07-14 ----------------------------- ----------------------------- -----------------------------
+
+--> http://javahash.com/spring-4-mvc-hello-world-tutorial-full-example/
+--> http://www.mkyong.com/spring-mvc/spring-mvc-hello-world-example/
+
+Get up at 2:45 AM, start to reasearch Spring MVC but that project can not run with tomcat7. 
+I have spent over 1 hour but I couldn't resolve. 
+After that I change to use tomcat6 so It works well!
+
+--> http://www.cnblogs.com/leiOOlei/p/3727859.html
+--> http://www.cnblogs.com/leiOOlei/p/3780290.html
