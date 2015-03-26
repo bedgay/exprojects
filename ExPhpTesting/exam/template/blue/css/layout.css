@@ -1,0 +1,106 @@
+@CHARSET "ISO-8859-1";
+/* ---- Common ---- */
+body {
+	margin: 0 0 0 0;
+	font-family: Tahoma,Geneva,sans-serif;
+	font-size: 12px;
+}
+.main {
+	width: 734px;
+	background-color: #39f;
+}
+.header {
+	background-image: url('../image/panel.png');
+	height: 90px;
+}
+.footer {
+	background-image: url('../image/panel.png');
+}
+.header,.body,.footer {
+	background-color: #fff;
+}
+.panel {
+	font-size: 14px;
+	font-style: italic;
+	font-weight: bold;
+	text-align: left;
+	color: #39f;				
+}
+.footer {
+	font-size: 10px;
+	font-style: italic;
+	text-align: center;
+}
+.slogan {
+	font-size: 10px;
+	font-style: italic;
+	font-weight: bold;
+	text-align: center;
+	color: #f00;
+	border-top: 1px solid #39f;
+}
+
+a:LINK {
+	color: #39f;
+	text-decoration: none;
+}
+a:VISITED {
+	color: #39f;
+	text-decoration: none;
+}
+a:HOVER {
+	color: #f00;
+	text-decoration: none;
+}
+
+a.hosting:LINK {
+	color: #f00;
+	text-decoration: none;
+}
+a.hosting:VISITED {
+	color: #f00;
+	text-decoration: none;
+}
+a.hosting:HOVER {
+	color: #f00;
+	text-decoration: none;
+}
+
+/* ---- Grid ---- */
+.grid {
+	background-color: #39f;	
+}
+.grid th {
+	background-color: #e3f0f5;
+	color: #39f;
+}
+.grid td {
+	background-color: #fff;
+}
+
+.grid .paging {
+	background-color: #e3f0f5;
+}
+
+.grid .paging .chosen {
+	color: #f00;
+	font-weight: bold;
+}
+
+/* ---- Form ---- */
+.form {
+	border: 1px solid #39f;
+}
+.form th {
+	background-color: #e3f0f5;
+	color: #39f;
+	border-bottom: 1px solid #39f;
+}
+
+/* ---- Question ---- */
+.a_order {
+	width: 25px;
+}
+.a_content {
+	width: 500px;
+}

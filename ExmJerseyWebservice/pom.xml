@@ -1,0 +1,688 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>javaz</groupId>
+	<artifactId>ExmJerseyWebservice</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ExmJerseyWebservice</name>
+
+	<properties>
+		<jersey.version>1.18</jersey.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Jersey + Spring -->
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-spring</artifactId>
+			<version>${jersey.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aop</artifactId>
+                </exclusion>
+			</exclusions>
+		</dependency>
+        <!-- Jersey Unit test -->
+        <dependency>
+            <groupId>com.sun.jersey.jersey-test-framework</groupId>
+            <artifactId>jersey-test-framework-grizzly</artifactId>
+            <version>1.18</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<!-- Spring frame -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.0.0.RELEASE</version>
+		</dependency>
+    	<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.0.0.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+        <!-- HIBERNATE -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.1.6.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.common</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>4.0.1.Final</version>
+		</dependency>
+
+		<!-- Commons -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<!-- Encoding -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.5</version>
+		</dependency>
+
+
+
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<!-- MySQL database driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.26</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<!-- logger -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<!-- MyBatis Integration -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.3</version>
+		</dependency>
+		<!-- Batch Module -->
+		<dependency>
+			<groupId>net.sourceforge.jtds</groupId>
+			<artifactId>jtds</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>MixJukeServices</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<!-- mvn tomcat:deploy -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<!-- Change the name of your server -->
+					<url>http://127.0.0.1:8080/manager/text</url>
+					<path>/</path>
+					<username>tomcat</username>
+					<password>s3cret</password>
+				</configuration>
+			</plugin>
+			<!-- Enabling and configuring regular resources filtering. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<!-- specify UTF-8, ISO-8859-1 or any other file encoding -->
+					<encoding>UTF-8</encoding>
+					<escapeString>\</escapeString>
+				</configuration>
+			</plugin>
+			<!-- Enabling and configuring web resources filtering -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<packagingExcludes>**/Test.class,**/TestImpl.class</packagingExcludes>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!-- Instructing the resources plugin to filter certain directories -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
+	<profiles><!-- mvn tomcat:redeploy -P local -->
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+				<jdbc.url>jdbc:mysql://localhost/MixJukeTest</jdbc.url>
+				<jdbc.useUnicode>true</jdbc.useUnicode>
+				<jdbc.characterEncoding>UTF-8</jdbc.characterEncoding>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>root</jdbc.password>
+
+				<mdl.driverClassName>com.mysql.jdbc.Driver</mdl.driverClassName>
+				<mdl.url>jdbc:mysql://localhost/mixjukebackup</mdl.url>
+				<mdl.username>root</mdl.username>
+				<mdl.password>root</mdl.password>
+
+				<mics.driverClassName>net.sourceforge.jtds.jdbc.Driver</mics.driverClassName>
+				<mics.url>jdbc:jtds:sqlserver://localhost/METADATA</mics.url>
+				<mics.username>sa</mics.username>
+				<mics.password>sa</mics.password>
+
+				<other.base_url>http://devmixjuke.mopita.com/</other.base_url>
+				<other.sv>devmixjuke</other.sv>
+                <other.enableRule1>true</other.enableRule1>
+                <mobita.id.api>https://devservice.mopita.com/iai-api/pub/cp_inquiry_member.inquiry_mopita_id</mobita.id.api>
+                <google.in.app.api>https://devwww.mopita.com/apl/iabilling/receive_event</google.in.app.api>
+				<public_key>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhqpOXsLd6p4cP6vZGbfqllZRD81KI9HxyK9LxdPzJtB6MvvV3BTmD8F4aBQljWsW6fGuNwAwpvRobpg+pSeztKoxQIl9EcE1G15gHN1u5rM4Mr+J39TcrAyhgTO2payYNnCQXoTfQ5vnS1wveqsHmI5fb9sD+4uC6pqvpE0+8Ln60f9vLaJrwbSVXSCdW2a0yLYYS3QlT6sR42eynw56fDvycIFa1blf1u8iYNPijWYC0USzfgfyseRzLR/6DsCCz6WHsz7XCRpiJ8b43JYoKKrgV8IYPhVTThFTW9onfJbW/5GzwO+2h10mpfP4z33tW7YDdaSV3EUazakqhFXFgwIDAQAB</public_key>
+				<secret_key>QVQGgmr2JIc6MZn9QUKjzg==</secret_key>
+				<access_key>ca03a571d3190ee533</access_key>
+				<site_id>S00214</site_id>
+				<!-- Used for <26> -->
+				<secret_key_standalone>KEMVxhZp5pbrI0/lbk0JCQ==</secret_key_standalone>
+				<access_key_standalone>7c18f21f02013b67d0</access_key_standalone>
+
+				<resource.free.id>R000001459</resource.free.id>
+				<resource.premium.id>R000001433</resource.premium.id>
+
+				<hibernate.show_sql>true</hibernate.show_sql>
+				<active_schedule>true</active_schedule>
+				
+				<log4j.threshold>TRACE</log4j.threshold>
+				<log4j.level>INFO</log4j.level>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>tomcat-maven-plugin</artifactId>
+						<version>1.1</version>
+						<configuration>
+							<server>Tomcat7</server>
+							<warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+							<url>http://localhost:8080/manager/text</url>
+							<path>/</path>
+							<username>tomcat</username>
+							<password>28Mytrax</password>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.16</version>
+						<configuration>
+							<skipTests>false</skipTests>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!-- mvn tomcat:redeploy -P dev -->
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+				<jdbc.url>jdbc:mysql://localhost/MixJuke</jdbc.url>
+				<jdbc.useUnicode>true</jdbc.useUnicode>
+				<jdbc.characterEncoding>UTF-8</jdbc.characterEncoding>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>k6PQrrzA</jdbc.password>
+
+				<mics.driverClassName>net.sourceforge.jtds.jdbc.Driver</mics.driverClassName>
+				<!-- 
+				<mics.url>jdbc:jtds:sqlserver://10.24.54.121/METADATA</mics.url>
+				 -->
+				<mics.url>jdbc:jtds:sqlserver://10.24.54.179/METADATA</mics.url>
+				
+				<mics.username>micssitestg</mics.username>
+				<mics.password>micssitestg</mics.password>
+
+				<mdl.driverClassName>com.mysql.jdbc.Driver</mdl.driverClassName>
+				<mdl.url>jdbc:mysql://localhost/MixJukeArchive</mdl.url>
+				<mdl.username>root</mdl.username>
+				<mdl.password>k6PQrrzA</mdl.password>
+
+				<other.base_url>http://devmixjuke.mopita.com/</other.base_url>
+				<other.sv>devmixjuke</other.sv>
+				<!-- Dev server always disable -->
+				<other.enableRule1>true</other.enableRule1>
+
+				<mobita.id.api>https://devservice.mopita.com/iai-api/pub/cp_inquiry_member.inquiry_mopita_id</mobita.id.api>
+				<public_key>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhqpOXsLd6p4cP6vZGbfqllZRD81KI9HxyK9LxdPzJtB6MvvV3BTmD8F4aBQljWsW6fGuNwAwpvRobpg+pSeztKoxQIl9EcE1G15gHN1u5rM4Mr+J39TcrAyhgTO2payYNnCQXoTfQ5vnS1wveqsHmI5fb9sD+4uC6pqvpE0+8Ln60f9vLaJrwbSVXSCdW2a0yLYYS3QlT6sR42eynw56fDvycIFa1blf1u8iYNPijWYC0USzfgfyseRzLR/6DsCCz6WHsz7XCRpiJ8b43JYoKKrgV8IYPhVTThFTW9onfJbW/5GzwO+2h10mpfP4z33tW7YDdaSV3EUazakqhFXFgwIDAQAB</public_key>
+				<secret_key>QVQGgmr2JIc6MZn9QUKjzg==</secret_key>
+				<access_key>ca03a571d3190ee533</access_key>
+				<site_id>S00214</site_id>
+				
+				<!-- Used for <26> -->
+				<secret_key_standalone>KEMVxhZp5pbrI0/lbk0JCQ==</secret_key_standalone>
+				<access_key_standalone>7c18f21f02013b67d0</access_key_standalone>
+				<google.in.app.api>https://devwww.mopita.com/apl/iabilling/receive_event</google.in.app.api>
+
+				<resource.free.id>R000001459</resource.free.id>
+				<resource.premium.id>R000001433</resource.premium.id>
+
+				<hibernate.show_sql>true</hibernate.show_sql>
+				<active_schedule>true</active_schedule>
+				
+				<log4j.threshold>TRACE</log4j.threshold>
+				<log4j.level>INFO</log4j.level>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>tomcat-maven-plugin</artifactId>
+						<version>1.1</version>
+						<configuration>
+							<server>Tomcat7</server>
+							<warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+							<!--
+							<url>http://dev.mixjuke.jp:8080/manager/text</url>
+							-->
+							<url>http://54.250.209.108:8080/manager/text</url>
+							<path>/</path>
+							<username>tomcat</username>
+							<password>28Mytrax</password>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.16</version>
+						<configuration>
+							<skipTests>true</skipTests>
+						</configuration>
+					</plugin>
+                    <!-- Don't package test service -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <packagingExcludes>**/Test.class,**/TestImpl.class</packagingExcludes>
+                        </configuration>
+                    </plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!-- mvn tomcat:redeploy -P beta -->
+		<!-- Be carefully !! -->
+		<profile>
+			<id>beta</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+				<!--jdbc.url>jdbc:mysql://localhost/MixJuke</jdbc.url-->
+				<jdbc.url>jdbc:mysql://m029st001db01.ck9lnf0ektnj.ap-northeast-1.rds.amazonaws.com:3306/MixJuke</jdbc.url>
+				<jdbc.useUnicode>true</jdbc.useUnicode>
+				<jdbc.characterEncoding>UTF-8</jdbc.characterEncoding>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>k6PQrrzA</jdbc.password>
+
+				<mics.driverClassName>net.sourceforge.jtds.jdbc.Driver</mics.driverClassName>
+				<mics.url>jdbc:jtds:sqlserver://10.24.54.179/METADATA</mics.url>
+				<mics.username>micssitestg</mics.username>
+				<mics.password>micssitestg</mics.password>
+
+				<mdl.driverClassName>com.mysql.jdbc.Driver</mdl.driverClassName>
+				<!--mdl.url>jdbc:mysql://localhost/MixJukeArchive</mdl.url-->
+				<mdl.url>jdbc:mysql://m029st001db01.ck9lnf0ektnj.ap-northeast-1.rds.amazonaws.com:3306/MixJukeArchive</mdl.url>
+				
+				<mdl.username>root</mdl.username>
+				<mdl.password>k6PQrrzA</mdl.password>
+
+				<other.base_url>http://betamixjuke.mopita.com/</other.base_url>
+				<other.sv>betamixjuke</other.sv>
+				<!-- Do NOT apply RULE 1 to beta(staging)&dev server. After phase 1 release: 
+					Release server: apply RULE 1 Staging server: apply RULE 1 Dev server : do 
+					not apply -->
+				<other.enableRule1>true</other.enableRule1>
+				
+				<!-- Must CHECK & MODIFY -->
+				<public_key>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhqpOXsLd6p4cP6vZGbfqllZRD81KI9HxyK9LxdPzJtB6MvvV3BTmD8F4aBQljWsW6fGuNwAwpvRobpg+pSeztKoxQIl9EcE1G15gHN1u5rM4Mr+J39TcrAyhgTO2payYNnCQXoTfQ5vnS1wveqsHmI5fb9sD+4uC6pqvpE0+8Ln60f9vLaJrwbSVXSCdW2a0yLYYS3QlT6sR42eynw56fDvycIFa1blf1u8iYNPijWYC0USzfgfyseRzLR/6DsCCz6WHsz7XCRpiJ8b43JYoKKrgV8IYPhVTThFTW9onfJbW/5GzwO+2h10mpfP4z33tW7YDdaSV3EUazakqhFXFgwIDAQAB</public_key>
+				<mobita.id.api>https://devservice.mopita.com/iai-api/pub/cp_inquiry_member.inquiry_mopita_id</mobita.id.api>
+				<secret_key>QVQGgmr2JIc6MZn9QUKjzg==</secret_key>
+				<access_key>ca03a571d3190ee533</access_key>
+				<site_id>S00214</site_id>
+				
+				<!-- Used for <26> -->
+				<secret_key_standalone>Z9eMbuK9V2JDsB7/zDMHqg==</secret_key_standalone>
+				<access_key_standalone>3245f6241777eafd13</access_key_standalone>
+				<google.in.app.api>https://devwww.mopita.com/apl/iabilling/receive_event</google.in.app.api>
+
+				<resource.free.id>R000001431</resource.free.id>
+				<resource.premium.id>R000001458</resource.premium.id>
+
+				<hibernate.show_sql>false</hibernate.show_sql>
+				<active_schedule>true</active_schedule>
+				
+				<log4j.threshold>INFO</log4j.threshold>
+				<log4j.level>INFO</log4j.level>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>tomcat-maven-plugin</artifactId>
+						<version>1.1</version>
+						<configuration>
+							<server>Tomcat7</server>
+							<warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+							<url>http://beta.mixjuke.jp:8080/manager/text</url>
+							<path>/</path>
+							<username>tomcat</username>
+							<password>28Mytrax</password>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.16</version>
+						<configuration>
+							<skipTests>true</skipTests>
+						</configuration>
+					</plugin>
+                    <!-- Don't package test service -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <packagingExcludes>**/Test.class,**/TestImpl.class</packagingExcludes>
+                        </configuration>
+                    </plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!--////////////////////////////////////////////////////////////////////////////////// 
+			Using the following command to execute IT: mvn integration-test -Pit /////////////////////////////////////////////////////////////////////////////////// -->
+		<profile>
+			<id>it</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Don't run unit test in this profile -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.16</version>
+						<configuration>
+							<skipTests>true</skipTests>
+						</configuration>
+					</plugin>
+					<!-- Run integration test -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.16</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>integration-test</goal>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<!-- mvn tomcat:redeploy -P prodserver1 -->
+		<!-- If change any config on prodserver1 profile please consider and apply to prodserver2 profile also -->
+        <profile>
+            <id>prodserver1</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+                <jdbc.url>jdbc:mysql://m029pr001db01.ck9lnf0ektnj.ap-northeast-1.rds.amazonaws.com:3306/MixJuke</jdbc.url>
+                <jdbc.useUnicode>true</jdbc.useUnicode>
+                <jdbc.characterEncoding>UTF-8</jdbc.characterEncoding>
+                <jdbc.username>root</jdbc.username>
+                <jdbc.password>k6PQrrzA</jdbc.password>
+
+                <mics.driverClassName>net.sourceforge.jtds.jdbc.Driver</mics.driverClassName>
+                <mics.url>jdbc:jtds:sqlserver://10.24.54.179/METADATA</mics.url>
+                <mics.username>micssitestg</mics.username>
+                <mics.password>micssitestg</mics.password>
+
+                <mdl.driverClassName>com.mysql.jdbc.Driver</mdl.driverClassName>
+                <mdl.url>jdbc:mysql://m029pr001db01.ck9lnf0ektnj.ap-northeast-1.rds.amazonaws.com:3306/MixJukeArchive</mdl.url>
+                
+                <mdl.username>root</mdl.username>
+                <mdl.password>k6PQrrzA</mdl.password>
+
+                <other.base_url>http://mixjuke.mopita.com/</other.base_url>
+                <other.sv>prodmixjuke</other.sv>
+                <other.enableRule1>true</other.enableRule1>
+                
+                <!-- Must CHECK & MODIFY -->
+                <public_key>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhqpOXsLd6p4cP6vZGbfqllZRD81KI9HxyK9LxdPzJtB6MvvV3BTmD8F4aBQljWsW6fGuNwAwpvRobpg+pSeztKoxQIl9EcE1G15gHN1u5rM4Mr+J39TcrAyhgTO2payYNnCQXoTfQ5vnS1wveqsHmI5fb9sD+4uC6pqvpE0+8Ln60f9vLaJrwbSVXSCdW2a0yLYYS3QlT6sR42eynw56fDvycIFa1blf1u8iYNPijWYC0USzfgfyseRzLR/6DsCCz6WHsz7XCRpiJ8b43JYoKKrgV8IYPhVTThFTW9onfJbW/5GzwO+2h10mpfP4z33tW7YDdaSV3EUazakqhFXFgwIDAQAB</public_key>
+                <mobita.id.api>https://service.mopita.com/iai-api/pub/cp_inquiry_member.inquiry_mopita_id</mobita.id.api>
+                <secret_key>edty+5YxjslzsP9Xle9+rQ==</secret_key>
+                <access_key>019a03d702bdb1f149</access_key>
+                <site_id>S00217</site_id>
+                <secret_key_standalone>edty+5YxjslzsP9Xle9+rQ==</secret_key_standalone>
+                <access_key_standalone>019a03d702bdb1f149</access_key_standalone>
+                <google.in.app.api>https://www.mopita.com/apl/iabilling/receive_event</google.in.app.api>
+
+                <resource.free.id>R000001460</resource.free.id>
+                <resource.premium.id>R000001434</resource.premium.id>
+
+                <hibernate.show_sql>false</hibernate.show_sql>
+				<active_schedule>true</active_schedule>
+				
+				<log4j.threshold>ERROR</log4j.threshold>
+				<log4j.level>ERROR</log4j.level>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>tomcat-maven-plugin</artifactId>
+                        <version>1.1</version>
+                        <configuration>
+                            <server>Tomcat7</server>
+                            <warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+                            <!-- MIXJUKE server 1: 54.250.209.139 *run jobs (active) -->
+                            <url>http://54.250.209.139:8080/manager/text</url>
+                            <path>/</path>
+                            <username>tomcat</username>
+                            <password>28Mytrax</password>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.16</version>
+                        <configuration>
+                            <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
+                    <!-- Don't package test service -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <packagingExcludes>**/Test.class,**/TestImpl.class</packagingExcludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        
+        <!-- mvn tomcat:redeploy -P prodserver2 -->
+        <!-- If change any config on prodserver2 profile please consider and apply to prodserver1 profile also -->
+        <profile>
+            <id>prodserver2</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+                <jdbc.url>jdbc:mysql://m029pr001db01.ck9lnf0ektnj.ap-northeast-1.rds.amazonaws.com:3306/MixJuke</jdbc.url>
+                <jdbc.useUnicode>true</jdbc.useUnicode>
+                <jdbc.characterEncoding>UTF-8</jdbc.characterEncoding>
+                <jdbc.username>root</jdbc.username>
+                <jdbc.password>k6PQrrzA</jdbc.password>
+
+                <mics.driverClassName>net.sourceforge.jtds.jdbc.Driver</mics.driverClassName>
+                <mics.url>jdbc:jtds:sqlserver://10.24.54.179/METADATA</mics.url>
+                <mics.username>micssitestg</mics.username>
+                <mics.password>micssitestg</mics.password>
+
+                <mdl.driverClassName>com.mysql.jdbc.Driver</mdl.driverClassName>
+                <mdl.url>jdbc:mysql://m029pr001db01.ck9lnf0ektnj.ap-northeast-1.rds.amazonaws.com:3306/MixJukeArchive</mdl.url>
+                
+                <mdl.username>root</mdl.username>
+                <mdl.password>k6PQrrzA</mdl.password>
+
+                <other.base_url>http://mixjuke.mopita.com/</other.base_url>
+                <other.sv>prodmixjuke</other.sv>
+                <other.enableRule1>true</other.enableRule1>
+                
+                <!-- Must CHECK & MODIFY -->
+                <public_key>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhqpOXsLd6p4cP6vZGbfqllZRD81KI9HxyK9LxdPzJtB6MvvV3BTmD8F4aBQljWsW6fGuNwAwpvRobpg+pSeztKoxQIl9EcE1G15gHN1u5rM4Mr+J39TcrAyhgTO2payYNnCQXoTfQ5vnS1wveqsHmI5fb9sD+4uC6pqvpE0+8Ln60f9vLaJrwbSVXSCdW2a0yLYYS3QlT6sR42eynw56fDvycIFa1blf1u8iYNPijWYC0USzfgfyseRzLR/6DsCCz6WHsz7XCRpiJ8b43JYoKKrgV8IYPhVTThFTW9onfJbW/5GzwO+2h10mpfP4z33tW7YDdaSV3EUazakqhFXFgwIDAQAB</public_key>
+                <mobita.id.api>https://service.mopita.com/iai-api/pub/cp_inquiry_member.inquiry_mopita_id</mobita.id.api>
+                <secret_key>edty+5YxjslzsP9Xle9+rQ==</secret_key>
+                <access_key>019a03d702bdb1f149</access_key>
+                <site_id>S00217</site_id>
+                <secret_key_standalone>edty+5YxjslzsP9Xle9+rQ==</secret_key_standalone>
+                <access_key_standalone>019a03d702bdb1f149</access_key_standalone>
+                <google.in.app.api>https://www.mopita.com/apl/iabilling/receive_event</google.in.app.api>
+
+                <resource.free.id>R000001460</resource.free.id>
+                <resource.premium.id>R000001434</resource.premium.id>
+
+                <hibernate.show_sql>false</hibernate.show_sql>
+                <active_schedule>false</active_schedule>
+				
+				<log4j.threshold>ERROR</log4j.threshold>
+				<log4j.level>ERROR</log4j.level>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>tomcat-maven-plugin</artifactId>
+                        <version>1.1</version>
+                        <configuration>
+                            <server>Tomcat7</server>
+                            <warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+                            <!-- MIXJUKE server 2: 54.199.194.158 *no job schedule (standby) -->
+                            <url>http://54.199.194.158:8080/manager/text</url>
+                            <path>/</path>
+                            <username>tomcat</username>
+                            <password>28Mytrax</password>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.16</version>
+                        <configuration>
+                            <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
+                    <!-- Don't package test service -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <packagingExcludes>**/Test.class,**/TestImpl.class</packagingExcludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        
+        
+	</profiles>
+</project>

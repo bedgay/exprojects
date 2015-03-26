@@ -1,0 +1,12 @@
+body {
+	color: black;
+	background-color: white;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+#input_invalid {
+	color: red;
+}
+.right_align{
+	float:right;
+	clear:both;
+}

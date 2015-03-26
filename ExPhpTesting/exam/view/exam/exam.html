@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>.: cPanel - Testing :.</title>
+	<?php $this->import()?>
+	<script type="text/javascript">
+		$(function() {
+			$('#checkAll').click(function() {
+				if ($(this).is(':checked')) {
+					$(this).closest('table').find('input').attr("checked", "checked");	
+				} else {
+					$(this).closest('table').find('input').removeAttr("checked");	
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<?php $this->header()?><br/>
+		<table width="100%"><tr>
+			<td align="left"><b>Testing on [ <i><?php echo $cat->name;?></i> ]</b></td>
+		</tr></table>
+		<hr/>
+		<form action="" method="post">
+			<center>
+				<table>
+					<tr>
+						<td align="left">Total of questions:</td>
+						<td align="left" width="575"><input name="total" value="20" style="width:30px;" maxlength="3"/></td>
+					</tr>
+					<tr>
+						<td align="left">Minutes per question:</td>
+						<td align="left">
+							<select name="minutes">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<table class="grid" cellspacing="1" cellpadding="5">
+					<tr>
+						<th align="center">Order</th>
+						<th align="center" width="610">Sections</th>
+						<th align="center"><input id="checkAll" type="checkbox" title="Check all"/></th>
+					</tr>
+					<?php foreach ($secs as $sec) {?>
+						<tr>
+							<td align="center"><?php echo $sec->order;?></td>
+							<td align="left"><?php echo $sec->name;?></td>
+							<td align="center"><input type="checkbox" name="secIDs[]" value="<?php echo $sec->id;?>"/></td>
+						</tr>
+					<?php } ?>
+				</table>
+				<br/>
+				<hr/>
+				<input type="submit" value="Start new test"/>
+			</center>
+		</form>
+		<br/>
+	<?php $this->footer()?>
+</body>
+</html>

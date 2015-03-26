@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>.: cPanel - Edit Section :.</title>
+	<?php $this->import()?>
+	<script type="text/javascript">
+		$(function() {
+			$("#order").focus();
+		});
+	</script>
+</head>
+<body>
+	<?php $this->header()?><br/>
+		<table width="100%"><tr>
+			<td align="left"><a href="?c=cpanel&a=cats">Category [<?php echo $cat->name?>]</a> > Sections</td>
+		</tr></table>
+		<hr/>
+		<form action="" method="post">
+			<center>
+				<table class="form" cellspacing="0" cellpadding="5">
+					<tr>
+						<th align="center" colspan="3">Edit Section</th>
+					</tr>
+					<tr>
+						<td align="left">Order</td>
+						<td align="left"><input type="text" id="order" name="order" maxlength="2" value="<?php echo $sec->order;?>"/></td>
+					</tr>
+					<tr>
+						<td align="left">Name</td>
+						<td align="left"><input type="text" id="name" name="name" value="<?php echo $sec->name;?>"/></td>
+					</tr>
+					<tr>
+						<td align="center" colspan="2">
+							<hr/>
+							<input type="submit" value="Save"/>
+						</td>
+					</tr>
+				</table>
+			</center>
+			<br/>
+		</form>
+	<?php $this->footer()?>
+</body>
+</html>

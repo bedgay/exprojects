@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+	<!-- <diskStore path="java.io.tmpdir" /> <diskStore path="D:/TuNgo/tmpdir" 
+		/> <diskStore path="/home/likewise-open/SUCCESS/tungo/Downloads/tmpdir" /> -->
+	<diskStore path="/home/likewise-open/SUCCESS/tungo/Downloads/tmpdir" />
+	<defaultCache eternal="false" maxElementsInMemory="100000"
+		maxElementsOnDisk="100000" overflowToDisk="true" diskPersistent="true"
+		timeToLiveSeconds="3600" />
+	<cache name="org.hibernate.cache.internal.StandardQueryCache"
+		maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600">
+	</cache>
+	<cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+		maxElementsInMemory="10000" eternal="true">
+	</cache>
+
+	<cache name="ehcache.basic.EhNote" maxElementsInMemory="10000"
+		eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="3600"
+		overflowToDisk="true">
+	</cache>
+
+</ehcache>

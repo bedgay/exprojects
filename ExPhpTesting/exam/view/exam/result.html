@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>.: cPanel - Testing :.</title>
+		<?php $this->import()?>
+	</head>
+	<body>
+		<?php $this->header()?><br/>
+			<table width="100%"><tr>
+				<td align="left"><b>Testing on [ <a href="?c=cpanel&a=cats"><i><?php echo $cat->name;?></i></a> ]</b></td>
+			</tr></table>
+			<hr/>
+			<center>
+				<table><tr>
+					<td>
+						Time spent: <?php echo $_SESSION[self::MINUTES] * sizeof($ques) - floor($_SESSION[self::TOTAL_MINUTES] / 60);?>/<?php echo $_SESSION[self::MINUTES] * sizeof($ques);?> minutes
+					</td>
+					<td style="padding-left: 30px; padding-right: 30px;">
+						Correct answer: <?php echo sizeof($ques) - sizeof($list); ?>/<?php echo sizeof($ques);?>
+					</td>
+					<td>
+						Not answer: <?php echo $notchosen;?>/<?php echo sizeof($ques);?>
+					</td>
+				</tr></table>
+				<?php foreach ($list as $item) { ?>
+					<hr/>
+					<table border="0" width="99%"><tr>
+						<td align="left">
+							<b style="color:red;">Question #<?php echo $item->order;?>:</b> <br/><br/><?php echo $item->content;?>
+						</td>
+					</tr></table>
+					<table border="0">
+						<?php foreach ($item->answers as $ans) {?>
+						<tr>
+							<td>
+								<input class="answer" type="checkbox" name="answers[]" value="<?php echo $ans->id;?>" disabled="disabled" 
+									<?php if ($ans->isChosen) echo 'checked="checked"';?> />
+							</td>
+							<td><b><?php echo $ans->order;?>.</b></td>
+							<td align="left" width="660">
+								<?php if ($ans->isTrue) { ?>
+									<b style="color: #39f;">
+										<?php echo $ans->content;?>
+									</b>
+								<?php } else { ?>
+									<?php echo $ans->content;?>
+								<?php } ?>
+							</td>
+						</tr>
+						<?php } ?>
+					</table>
+					<table width="100%"><tr><td align="right">
+						<a href="?c=cpanel&a=queedit&sid=<?=$item->sectionID?>&id=<?=$item->id?>" target="blank">Edit</a>
+					</td></tr></table>
+				<?php } ?>
+				<br/>
+			</center>
+		<?php $this->footer()?>
+	</body>
+</html>

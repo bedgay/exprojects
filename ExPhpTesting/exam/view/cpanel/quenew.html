@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>.: cPanel - New Section :.</title>
+	<?php $this->import()?>
+	<?php $this->richtext()?>
+	<script type="text/javascript">
+		$(function() {
+			$("#order").focus();
+			
+			$('.jqte_rich_text').jqte();			
+			// settings of status
+			var jqteStatus = true;
+			$(".status").click(function()
+			{
+				jqteStatus = jqteStatus ? false : true;
+				$('.jqte_rich_text').jqte({"status" : jqteStatus})
+			});
+			
+			$('.a_chosen').each(function() {
+				$(this).click(function() {
+					if ($(this).is(':checked')) {
+						$(this).closest('tr').find('input').removeAttr("disabled");	
+					} else {
+						$(this).closest('tr').find('input').attr("disabled", "disabled");
+						$(this).closest('tr').find('.a_chosen').removeAttr("disabled");	
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<?php $this->header()?><br/>
+		<table width="100%"><tr>
+			<td align="left"><a href="?c=cpanel&a=cats">Category [<?php echo $cat->name;?>]</a> > <a href="?c=cpanel&a=ques&sid=<?php echo $sid;?>">Section [<?php echo $sec->name;?>]</a></td>
+		</tr></table>
+		<hr/>
+		<form action="" method="post">
+			<center>
+				<table class="form" width="580" cellspacing="0" cellpadding="5">
+					<tr>
+						<th align="center" colspan="3">Create new Question</th>
+					</tr>
+					<tr>
+						<td align="left">Order</td>
+						<td align="left"><input type="text" id="order" name="order"/></td>
+					</tr>
+					<tr>
+						<td align="left" colspan="2">
+							Content
+							<textarea name="content" class="jqte_rich_text"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td align="left" colspan="2">
+							Answers
+							<table>
+								<tr>
+									<td></td>
+									<td>Order</td>
+									<td>Content</td>
+									<td>Is Right</td>
+								</tr>
+								<?php for ($i = 0; $i < 10; $i ++) {?>
+									<tr>
+										<td><input type="checkbox" class="a_chosen"/></td>
+										<td><input name="ansOrder[]" class="a_order" disabled="disabled" maxlength="1"/></td>
+										<td><input name="ansContent[]" class="a_content" disabled="disabled"/></td>
+										<td><input name="ansIsRight[]" type="checkbox" disabled="disabled" value="<?php echo $i;?>"/></td>
+									</tr>
+								<?php }?>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" colspan="2">
+							<hr/>
+							<input type="submit" value="Save"/>
+						</td>
+					</tr>
+				</table>
+			</center>
+			<br/>
+		</form>
+	<?php $this->footer()?>
+</body>
+</html>

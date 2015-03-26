@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>.: cPanel - Testing :.</title>
+	<?php $this->import()?>
+	<script type="text/javascript">
+		var spentTime = 0;
+		$(function() {
+			$('input[type=submit]').click(function() {
+				$('input[name=submitType]').val(this.id);
+				return true;
+			});	
+			
+			$('#selectMark').change(function() {
+				$('input[name=submitType]').val(this.id);
+				$('#mainForm').submit();
+			});
+			
+			$('.answer').each(function() {
+				if ($(this).attr('istrue') == '1') {
+					$(this).attr("checked", "checked");
+				}
+				$(this).removeAttr('istrue');
+			});
+			
+			if ($('input[name=leftTime]').val() <= 0) {
+				$('#btnDone').trigger("click");
+			}
+			
+			setInterval(function() {
+				spentTime++;
+				$('input[name=spentTime]').val(spentTime);
+				if (spentTime == <?php echo $_SESSION[self::MINUTES] * 60?>) {
+					$('#mainForm').submit();	
+				}				
+			}, 1000);
+		});
+	</script>
+</head>
+<body>
+	<?php $this->header()?><br/>
+		<table width="100%"><tr>
+			<td align="left"><b>Testing on [ <i><?php echo $cat->name;?></i> ]</b></td>
+		</tr></table>
+		<hr/>
+		<form id="mainForm" action="" method="post">
+			<center>
+				<table border="0" width="99%">
+					<tr>
+						<td align="left" width="30%">Question: #<?php echo $index + 1;?>/<?php echo sizeof($ques);?></td>
+						<td align="center" width="40%">
+							Mark: <input type="checkbox" name="checkmark" value="<?php echo $index;?>" <?php if($isCheckMark) { echo 'checked="checked"'; }?>/>
+							<?php if (sizeof($marks) > 0) {?>
+								<select id="selectMark" name="selectMark">
+									<option></option>
+									<?php foreach($marks as $mark) {?>
+										<option value="<?php echo $mark;?>" <?php if ($mark == $index) { echo 'selected="selected"'; } ?>><?php echo $mark + 1;?></option>
+									<?php } ?>
+								</select>
+							<?php } ?>
+						</td>
+						<td align="right" width="30%">
+							<?php echo floor($_SESSION[self::TOTAL_MINUTES] / 60);?> minute(s) left
+							<input type="hidden" name="leftTime" value="<?php echo floor($_SESSION[self::TOTAL_MINUTES] / 60);?>"/>
+							<input type="hidden" name="spentTime" value="0"/>
+						</td>
+					</tr>
+				</table>
+				<hr/>
+				<table border="0" width="99%"><tr>
+					<td align="left">
+						<?php echo $que->content;?>
+					</td>
+				</tr></table>
+				<table border="0">
+					<?php foreach ($que->answers as $ans) {?>
+					<tr>
+						<td><input class="answer" type="checkbox" name="answers[]" value="<?php echo $ans->id;?>" istrue="<?php echo $ans->isTrue;?>"/></td>
+						<td><b><?php echo $ans->order;?>.</b></td>
+						<td align="left" width="660"><?php echo $ans->content;?></td>
+					</tr>
+					<?php } ?>
+				</table>
+				<table width="100%"><tr><td align="right">
+					<a href="?c=cpanel&a=queedit&sid=<?=$que->sectionID?>&id=<?=$que->id?>" target="blank">Edit</a>
+				</td></tr></table>
+				<br/>
+				<hr/>
+				<table width="100%"><tr>
+					<td width="30%" align="left">
+						<input type="hidden" name="submitType" value="0"/>
+						<input id="btnDone" type="submit" value="Done"/>
+					</td>
+					<td width="40%" align="center">
+						<input id="btnPrevious" type="submit" value="Previous" <?php if ($findIndex == 0) echo ' disabled="disabled"';?>/>
+						<input id="btnNext" type="submit" value="Next" <?php if ($findIndex == sizeof($ques) - 1) echo ' disabled="disabled"';?>/>
+					</td>
+					<td width="30%" align="right">
+						<input id="btnFindNextUnanswered" type="submit" value="Find next unanswered"/>
+					</td>
+				</tr></table>
+			</center>
+		</form>
+	<?php $this->footer()?>
+</body>
+</html>

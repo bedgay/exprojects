@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC
+  "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration>
+  <appender name="console" class="org.apache.log4j.ConsoleAppender">
+    <param name="Target" value="System.out" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+    </layout>
+  </appender>
+  <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="${catalina.base}/logs/mixjuke.log" />   
+    <param name="Threshold" value="${log4j.threshold}" />
+    <param name="DatePattern" value="'.'dd.MM.yyyy" />  
+    <layout class="org.apache.log4j.EnhancedPatternLayout">
+      <param name="ConversionPattern" value="%d{ISO8601} %-5p - %-26.26c{1} - %m%n" />
+    </layout>
+  </appender>
+  <logger name="jp" additivity="true">
+    <level value="${log4j.level}" />
+    <appender-ref ref="console" />
+    <appender-ref ref="file" />
+  </logger>
+  <logger name="org" additivity="true">
+    <level value="${log4j.level}" />
+    <appender-ref ref="console" />
+    <appender-ref ref="file" />
+  </logger>
+  <logger name="javax" additivity="true">
+    <level value="${log4j.level}" />
+    <appender-ref ref="console" />
+    <appender-ref ref="file" />
+  </logger>
+  <logger name="java" additivity="true">
+    <level value="${log4j.level}" />
+    <appender-ref ref="console" />
+    <appender-ref ref="file" />
+  </logger>
+  <logger name="net" additivity="true">
+    <level value="${log4j.level}" />
+    <appender-ref ref="console" />
+    <appender-ref ref="file" />
+  </logger>
+  <logger name="com" additivity="true">
+    <level value="${log4j.level}" />
+    <appender-ref ref="console" />
+    <appender-ref ref="file" />
+  </logger>  
+</log4j:configuration>

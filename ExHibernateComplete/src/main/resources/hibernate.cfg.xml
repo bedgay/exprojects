@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernatecomplete</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123456</property>
+        <!-- 
+		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+		 --> 
+        <property name="show_sql">true</property>
+        
+        <!-- discriminator -->
+        <mapping class="hibernate.complete.discriminator.Category"/>
+        <mapping class="hibernate.complete.discriminator.NewsCategory"/>
+        <mapping class="hibernate.complete.discriminator.ProductCategory"/>
+        
+        <!-- MappedSuperclass -->
+        <mapping class="hibernate.complete.mappedsuperclass.BasicMember"/>
+        <mapping class="hibernate.complete.mappedsuperclass.Customer"/>
+        
+        <!-- TableGenerator -->
+        <mapping class="hibernate.complete.tablegenerator.Invoice"/>
+    </session-factory>
+</hibernate-configuration>
